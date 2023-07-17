@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Department</title>
+    <style>
+      .marginAdd {
+        margin: 20px;
+      }
+      .displayDepartment {
+        display: grid;
+        grid-template-columns: auto auto auto auto;
+        padding: 10px;
+      }
+      .displayDepartment-item {
+        background-color: rgba(255, 255, 255, 0.8);
+        border: 1px solid rgba(0, 0, 0, 0.8);
+        padding: 20px;
+        font-size: 14px;
+        text-align: center;
+      }
+    </style>
+  </head>
+  <body>
+    <form action="./department" , class="marginAdd" , method="POST">
+      <input type="text" placeholder="Mã khoa" name="txtIdDepartment" />
+      <input type="text" placeholder="Tên khoa" name="txtNameDepartment" />
+      <br />
+      <br />
+      <input type="submit" value="Thêm khoa" />
+      <div class="displayDepartment">
+        <div class="displayDepartment-item">Mã khoa</div>
+        <div class="displayDepartment-item">Tên khoa</div>
+        <div class="displayDepartment-item"></div>
+        <div class="displayDepartment-item"></div>
+        <% list.forEach(function(departments){%>
+        <div class="displayDepartment-item"><%-departments.idDepartment%></div>
+        <div class="displayDepartment-item">
+          <%-departments.nameDepartment%>
+        </div>
+        <div class="displayDepartment-item">
+          <a href="./department/update/<%-departments._id%>">Sửa</a>
+        </div>
+        <div class="displayDepartment-item">
+          <a
+            onClick="return confirm('Bạn có muốn xóa không')"
+            href="./department/delete/<%-departments._id%>"
+            >Xóa</a
+          >
+        </div>
+        <% }); %>
+      </div>
+    </form>
+  </body>
+</html>

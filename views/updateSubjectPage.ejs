@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <base href="http://localhost:8008/subject" />
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Update subject</title>
+  </head>
+  <body>
+    <h2>Update subject</h2>
+    <form action="./subject/update" method="POST">
+      <input type="hidden" name="idSub" value="<%-subject._id%>" />
+      <select name="txtIdDepartment" id="txtIdDepartment">
+        <% departments.forEach(function(departments){%>
+        <option value="<%-departments.idDepartment%>">
+          <%-departments.idDepartment%> - <%-departments.nameDepartment%>
+        </option>
+        <% }); %>
+      </select>
+      <br />
+      <input type="text" name="txtIdSubject" value="<%-subject.idSubject%>" />
+      <br />
+      <input
+        type="text"
+        name="txtNameSubject"
+        value="<%-subject.nameSubject%>"
+      />
+      <br />
+      <input type="submit" value="Update" />
+    </form>
+  </body>
+</html>

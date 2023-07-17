@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <base href="http://localhost:8008/exam" />
+
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Update exam</title>
+  </head>
+  <body>
+    <h2>Update exam</h2>
+    <form action="./exam/update" enctype="multipart/form-data" method="POST">
+      <select name="txtIdSubject" id="txtIdSubject">
+        <% allSubject.forEach(function(subjects){%>
+        <option value="<%-subjects.idSubject%>">
+          <%-subjects.idSubject%> - <%-subjects.nameSubject%>
+        </option>
+        <% }); %>
+      </select>
+      <br />
+      <input type="hidden" name="idEx" value="<%-myExam._id%>" />
+      <input type="text" name="txtIdExam" value="<%-myExam.idExam%>" />
+      <br />
+      <input type="text" name="txtNameExam" value="<%-myExam.nameExam%>" />
+      <br />
+      <input type="text" name="txtResult" value="<%-myExam.result%>" />
+      <br />
+      <input type="text" name="txtTime" value="<%-myExam.time%>" />
+      <br />
+      <a href="./view-doc/<%-myExam.file%>"><%-myExam.file%></a>
+      <br />
+      <input type="file" name="fileExam" />
+      <br />
+      <input type="submit" value="Update" />
+    </form>
+  </body>
+</html>

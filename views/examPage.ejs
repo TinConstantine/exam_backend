@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Exam</title>
+    <style>
+      .marginAdd {
+        margin: 20px;
+      }
+      .displayExam {
+        display: grid;
+        grid-template-columns: auto auto auto auto auto auto auto auto;
+        padding: 10px;
+      }
+      .displayExam-item {
+        background-color: rgba(255, 255, 255, 0.8);
+        border: 1px solid rgba(0, 0, 0, 0.8);
+        padding: 20px;
+        font-size: 14px;
+        text-align: center;
+      }
+    </style>
+  </head>
+  <body>
+    <form
+      class="marginAdd"
+      action="./exam"
+      method="POST"
+      enctype="multipart/form-data"
+    >
+      <!-- <input type="text" name="txtIdSubject" placeholder="Mã môn học" /> -->
+      <select name="txtIdSubject" id="txtIdSubject">
+        <% subjectValue.forEach(function(subjects){%>
+        <option value="<%-subjects.idSubject%>">
+          <%-subjects.idSubject%> - <%-subjects.nameSubject%>
+        </option>
+        <% }); %>
+      </select>
+      <input type="text" name="txtIdExam" placeholder="Mã bài thi" />
+      <input type="text" name="txtNameExam" placeholder="Tên bài thi" />
+      <input type="text" name="txtResult" placeholder="Đáp án" />
+      <input type="text" name="txtTime" placeholder="Thời gian" />
+      <input type="file" name="fileExam" />
+      <br />
+      <br />
+      <input type="submit" value="Add new exam" />
+      <br />
+      <br />
+      <br />
+      <div class="displayExam">
+        <div class="displayExam-item">Mã môn học</div>
+        <div class="displayExam-item">Mã bài thi</div>
+        <div class="displayExam-item">Tên bài thi</div>
+        <div class="displayExam-item">Đáp án</div>
+        <div class="displayExam-item">Thời gian</div>
+        <div class="displayExam-item">File bài tập</div>
+        <div class="displayExam-item"></div>
+        <div class="displayExam-item"></div>
+        <% list.forEach(function(exams){%>
+        <div class="displayExam-item"><%-exams.idSubject%></div>
+        <div class="displayExam-item"><%-exams.idExam%></div>
+        <div class="displayExam-item"><%-exams.nameExam%></div>
+        <div class="displayExam-item"><%-exams.result%></div>
+        <div class="displayExam-item"><%-exams.time%></div>
+        <div class="displayExam-item">
+          <a href="./view-doc/<%-exams.file%>"><%-exams.file%></a>
+        </div>
+        <div class="displayExam-item">
+          <a href="./exam/update/<%-exams._id%>">Sửa</a>
+        </div>
+        <div class="displayExam-item">
+          <a
+            onClick="return confirm('Bạn có muốn xóa không')"
+            href="./exam/delete/<%-exams._id%>"
+            >Xóa</a
+          >
+        </div>
+        <% }); %>
+      </div>
+    </form>
+  </body>
+</html>

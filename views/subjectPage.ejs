@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Subject</title>
+    <style>
+      .marginAdd {
+        margin: 20px;
+      }
+      .displaySubject {
+        display: grid;
+        grid-template-columns: auto auto auto auto auto;
+        padding: 10px;
+      }
+      .displaySubject-item {
+        background-color: rgba(255, 255, 255, 0.8);
+        border: 1px solid rgba(0, 0, 0, 0.8);
+        padding: 20px;
+        font-size: 14px;
+        text-align: center;
+      }
+    </style>
+  </head>
+  <body>
+    <form action="./subject" , method="POST" , class="marginAdd">
+      <select name="txtIdDepartment" id="txtIdDepartment">
+        <% allDepartment.forEach(function(departments){%>
+        <option value="<%-departments.idDepartment%>">
+          <%-departments.idDepartment%> - <%-departments.nameDepartment%>
+        </option>
+        <% }); %>
+      </select>
+      <input type="text" placeholder="Mã môn học" name="txtIdSubject" />
+      <input type="text" placeholder="Tên môn học" name="txtNameSubject" />
+      <br />
+      <br />
+      <input type="submit" value="Thêm môn học" />
+      <div class="displaySubject">
+        <div class="displaySubject-item">Mã khoa</div>
+        <div class="displaySubject-item">Mã môn học</div>
+        <div class="displaySubject-item">Tên môn học</div>
+        <div class="displaySubject-item"></div>
+        <div class="displaySubject-item"></div>
+        <% subjects.forEach(function(subject){%>
+        <div class="displaySubject-item"><%-subject.idDepartment%></div>
+        <div class="displaySubject-item"><%-subject.idSubject%></div>
+        <div class="displaySubject-item"><%-subject.nameSubject%></div>
+        <div class="displaySubject-item">
+          <a href="./subject/update/<%-subject._id%>">Sửa</a>
+        </div>
+        <div
+          onClick="return confirm('Bạn có muốn xóa không ?')"
+          class="displaySubject-item"
+        >
+          <a href="./subject/delete/<%-subject._id%>">Xóa</a>
+        </div>
+        <% }); %>
+      </div>
+    </form>
+  </body>
+</html>

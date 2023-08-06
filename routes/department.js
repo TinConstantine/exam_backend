@@ -6,4 +6,5 @@ router.post("/update", departmentController.updateDepartment);
 router.get("/", departmentController.getAllDepartment);
 router.get("/delete/:id", departmentController.deleteDepartment);
 router.get("/update/:id", departmentController.getDepartment);
+router.get("/json", departmentController.getAllDepartmentJson);
 export default router;

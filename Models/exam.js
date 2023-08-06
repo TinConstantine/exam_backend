@@ -9,6 +9,7 @@ export default mongoose.model(
     nameExam: { type: String, required: true },
     file: { type: String, required: true },
     result: { type: String, required: true },
-    time: { type: String },
+    time: { type: String, required: true },
+    quantity: { type: String, required: true },
   })
 );

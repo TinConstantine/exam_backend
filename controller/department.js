@@ -51,6 +51,12 @@ async function getAllDepartment(req, res) {
   // res.status(HttpStatusCode.OK).json({ data: getDepartment });
   res.render("departmentPage", { list: getDepartment });
 }
+async function getAllDepartmentJson(req, res) {
+  let getDepartment = await departmentRepositories.getAllDepartment(req, res);
+  res.status(HttpStatusCode.OK).json({
+    data: getDepartment,
+  });
+}
 async function deleteDepartment(req, res) {
   try {
     await departmentRepositories.deleteDepartment({ id: req.params.id });
@@ -69,4 +75,5 @@ export default {
   getAllDepartment,
   deleteDepartment,
   getDepartment,
+  getAllDepartmentJson,
 };

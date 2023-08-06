@@ -60,10 +60,19 @@ async function getSubject({ id }) {
   }
   return existingSubject;
 }
+
+async function getJsonSubjectByIdDepart({ idDepartment }) {
+  const existingSubject = await subject.find({ idDepartment });
+  if (!existingSubject) {
+    throw new Exception(Exception.CANNOT_GET_SUBJECT);
+  }
+  return existingSubject;
+}
 export default {
   addSubject,
   updateSubject,
   getAllSubject,
   deleteSubject,
   getSubject,
+  getJsonSubjectByIdDepart,
 };

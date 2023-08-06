@@ -8,4 +8,5 @@ router.post("/update", subjectController.updateSubject);
 router.get("/", subjectController.getAllSubject);
 router.get("/delete/:id", subjectController.deleteSubject);
 router.get("/update/:id", subjectController.getSubject);
+router.get("/json/:id", subjectController.getJsonSubjectByIdDepart);
 export default router;

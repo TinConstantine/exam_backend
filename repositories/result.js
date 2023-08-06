@@ -1,6 +1,6 @@
 import Exception from "../Exception/exception.js";
 import { result, exam, user } from "../Models/index.js";
-async function postResult({ idExam, idUser, point }) {
+async function postResult({ idExam, idUser, point, userRes, completeTime }) {
   const existingExam = await exam.findById(idExam).exec();
   const existingUser = await user.findById(idUser).exec();
   if (!existingExam) {
@@ -9,7 +9,13 @@ async function postResult({ idExam, idUser, point }) {
   if (!existingUser) {
     throw new Exception("Invalid user!");
   }
-  const finalResult = await result.create({ idExam, idUser, point });
+  const finalResult = await result.create({
+    idExam,
+    idUser,
+    point,
+    userRes,
+    completeTime,
+  });
   return finalResult;
 }
 async function getResultByIdUser({ idUser }) {

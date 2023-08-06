@@ -7,5 +7,7 @@ export default mongoose.model(
     idExam: { type: String, required: true },
     idUser: { type: String, required: true },
     point: { type: String },
+    userRes: { type: String },
+    completeTime: { type: String },
   })
 );

@@ -74,10 +74,25 @@ async function getSubject(req, res) {
     });
   }
 }
+async function getJsonSubjectByIdDepart(req, res) {
+  try {
+    const existingSubject = await subjectRepositories.getJsonSubjectByIdDepart({
+      idDepartment: req.params.id,
+    });
+    res.status(HttpStatusCode.OK).json({
+      data: existingSubject,
+    });
+  } catch (error) {
+    res.status(HttpStatusCode.BAD_REQUEST).json({
+      message: Exception.toString(),
+    });
+  }
+}
 export default {
   addSubject,
   updateSubject,
   getAllSubject,
   deleteSubject,
   getSubject,
+  getJsonSubjectByIdDepart,
 };

@@ -35,15 +35,22 @@ router.post("/", upload.single("fileExam"), async function (req, res) {
     res.status(400).json({ message: "Không có tệp tin được tải lên." });
     return;
   }
-  await exam.create({
-    idSubject: req.body.txtIdSubject,
-    idExam: req.body.txtIdExam,
-    nameExam: req.body.txtNameExam,
-    result: req.body.txtResult,
-    time: req.body.txtTime,
-    file: req.file.originalname,
-  });
-  res.status(200).json({ message: "Tệp tin tải lên thành công." });
+  try {
+    await exam.create({
+      idSubject: req.body.txtIdSubject,
+      idExam: req.body.txtIdExam,
+      nameExam: req.body.txtNameExam,
+      result: req.body.txtResult,
+      time: req.body.txtTime,
+      file: req.file.originalname,
+      quantity: req.body.txtQuantity,
+    });
+    res.status(200).json({ message: "Tệp tin tải lên thành công." });
+  } catch (Exception) {
+    res.status(HttpStatusCode.INTERNAL_SEVER_EROR).json({
+      error: Exception.toString(),
+    });
+  }
 });
 
 async function getExam(req, res) {
@@ -96,6 +103,7 @@ router.post("/update", upload.single("fileExam"), async function (req, res) {
     myExam.nameExam = req.body.txtNameExam ?? myExam.nameExam;
     myExam.result = req.body.txtResult ?? myExam.result;
     myExam.time = req.body.txtTime ?? myExam.time;
+    myExam.quantity = req.body.txtQuantity ?? myExam.quantity;
     await myExam.save();
   } else {
     myExam.idSubject = req.body.txtIdSubject ?? myExam.idSubject;
@@ -104,10 +112,16 @@ router.post("/update", upload.single("fileExam"), async function (req, res) {
     myExam.result = req.body.txtResult ?? myExam.result;
     myExam.time = req.body.txtTime ?? myExam.time;
     myExam.file = req.file.originalname;
+    myExam.quantity = req.body.txtQuantity ?? myExam.quantity;
     await myExam.save();
   }
 
   res.status(201).json({ message: "Update successfully" });
 });
-
+router.get("/json/:id", async (req, res) => {
+  const existingExam = await exam.find({ idSubject: req.params.id });
+  res.status(HttpStatusCode.OK).json({
+    data: existingExam,
+  });
+});
 export default router;

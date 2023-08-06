@@ -24,8 +24,6 @@ async function updateDepartment({ id, idDepartment, nameDepartment }) {
   } else {
     idUsed = id;
   }
-  console.log(idUsed);
-  console.log(id);
 
   if (idUsed != id) {
     throw new Exception(Exception.DEPARTMENT_EXIST);
@@ -73,6 +71,7 @@ async function getAllDepartment() {
   const allDepartment = await department.find({});
   return allDepartment;
 }
+
 export default {
   addDepartment,
   updateDepartment,

@@ -10,7 +10,7 @@
       }
       .displayExam {
         display: grid;
-        grid-template-columns: auto auto auto auto auto auto auto auto;
+        grid-template-columns: auto auto auto auto auto auto auto auto auto;
         padding: 10px;
       }
       .displayExam-item {
@@ -39,6 +39,7 @@
       </select>
       <input type="text" name="txtIdExam" placeholder="Mã bài thi" />
       <input type="text" name="txtNameExam" placeholder="Tên bài thi" />
+      <input type="text" name="txtQuantity" placeholder="Số lượng câu hỏi" />
       <input type="text" name="txtResult" placeholder="Đáp án" />
       <input type="text" name="txtTime" placeholder="Thời gian" />
       <input type="file" name="fileExam" />
@@ -52,6 +53,7 @@
         <div class="displayExam-item">Mã môn học</div>
         <div class="displayExam-item">Mã bài thi</div>
         <div class="displayExam-item">Tên bài thi</div>
+        <div class="displayExam-item">Số lượng câu hỏi</div>
         <div class="displayExam-item">Đáp án</div>
         <div class="displayExam-item">Thời gian</div>
         <div class="displayExam-item">File bài tập</div>
@@ -61,6 +63,7 @@
         <div class="displayExam-item"><%-exams.idSubject%></div>
         <div class="displayExam-item"><%-exams.idExam%></div>
         <div class="displayExam-item"><%-exams.nameExam%></div>
+        <div class="displayExam-item"><%-exams.quantity%></div>
         <div class="displayExam-item"><%-exams.result%></div>
         <div class="displayExam-item"><%-exams.time%></div>
         <div class="displayExam-item">
@@ -72,7 +75,7 @@
         <div class="displayExam-item">
           <a
             onClick="return confirm('Bạn có muốn xóa không')"
-            href="./exam/delete/<%-exams._id%>"
+            href="./delete/<%-exams._id%>"
             >Xóa</a
           >
         </div>

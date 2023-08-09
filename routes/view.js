@@ -124,4 +124,11 @@ router.get("/json/:id", async (req, res) => {
     data: existingExam,
   });
 });
+
+router.get("/:id", async (req, res) => {
+  const existingExam = await exam.findById(req.params.id).exec();
+  res.status(HttpStatusCode.OK).json({
+    data: existingExam,
+  });
+});
 export default router;

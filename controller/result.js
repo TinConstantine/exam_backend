@@ -45,7 +45,11 @@ async function getResultByIdUser(req, res) {
       .json({ message: Exception.toString() });
   }
 }
-
+async function viewResultByIdUser(req, res) {
+  const existingUser = await resultRepositories.getResultByIdUser({
+    idUser: req.params.id,
+  });
+}
 export default {
   postResult,
   getResultByIdUser,

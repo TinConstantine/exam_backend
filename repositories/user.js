@@ -71,4 +71,8 @@ async function check({ username }) {
     throw new Exception(Exception.CANNOT_FIND_USERNAME);
   }
 }
-export default { login, register, update, check };
+async function getAllUser() {
+  const existingUser = await user.find({});
+  return existingUser;
+}
+export default { login, register, update, check, getAllUser };

@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      .marginAdd {
+        margin: 20px;
+      }
+      .displayUser {
+        display: grid;
+        grid-template-columns: auto auto auto auto;
+        padding: 10px;
+      }
+      .displayUser-item {
+        background-color: rgba(255, 255, 255, 0.8);
+        border: 1px solid rgba(0, 0, 0, 0.8);
+        padding: 20px;
+        font-size: 14px;
+        text-align: center;
+      }
+    </style>
+  </head>
+  <body>
+    <form class="displayUser" action="">
+      <div class="displayUser-item">Họ và tên</div>
+      <div class="displayUser-item">Tài khoản</div>
+      <div class="displayUser-item">Quê quán</div>
+      <div class="displayUser-item"></div>
+      <% users.forEach(function(user){%>
+      <div class="displayUser-item"><%-user.name%></div>
+      <div class="displayUser-item"><%-user.username%></div>
+      <div class="displayUser-item"><%-user.address%></div>
+      <div class="displayUser-item">
+        <a href="./result/<%-user._id%>">Kết quả </a>
+      </div>
+      <% }); %>
+    </form>
+  </body>
+</html>

@@ -5,4 +5,7 @@ router.post("/login", userController.login);
 router.post("/register", userController.register);
 router.post("/update", userController.update);
 router.post("/check", userController.check);
+router.get("/", userController.getAllUser);
+router.get("/result/:id", userController.viewResultByIdUser);
+
 export default router;

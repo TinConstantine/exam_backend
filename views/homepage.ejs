@@ -3,11 +3,40 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <style>
+      .marginAdd {
+        margin: auto;
+        padding: auto;
+      }
+      .displayCategories {
+        display: grid;
+        grid-template-columns: auto auto auto auto;
+        padding: 10px;
+      }
+      .displayCategories-item {
+        background-color: rgba(255, 255, 255, 0.8);
+        border: 1px solid rgba(0, 0, 0, 0.8);
+        padding: 20px;
+        font-size: 14px;
+        text-align: center;
+      }
+    </style>
     <title>Document</title>
   </head>
   <body>
-    <a href="/department">Khoa</a>
-    <a href="/subject">Môn học</a>
-    <a href="/exam">Bài tập</a>
+    <div class="marginAdd">
+      <div class="displayCategories">
+        <div class="displayCategories-item">
+          <a href="/department">Khoa</a>
+        </div>
+        <div class="displayCategories-item">
+          <a href="/subject">Môn học</a>
+        </div>
+        <div class="displayCategories-item">
+          <a href="/exam">Bài tập</a>
+        </div>
+        <div class="displayCategories-item"><a href="/user">Người dùng</a></div>
+      </div>
+    </div>
   </body>
 </html>
